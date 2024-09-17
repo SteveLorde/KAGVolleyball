@@ -97,7 +97,7 @@ void Rules_ResetQueuesTimer(CRules@ this, QueueObject@ queues)
 	u16 cfg_queuelocktime = cfg.read_u16("queue_lock_time", 20);
 	queues.timeremaining = cfg_queuelocktime*30;
 	queues.equalteams = cfg.read_bool("equalteams", true);
-	//this.set("team_queues", @queues);
+	this.set("team_queues", @queues);
 }
 
 void Rules_SetJoinQueues(CRules@ this)
@@ -158,6 +158,7 @@ void onInit(CRules@ this)
 
 void onRestart(CRules@ this)
 {
+	print("RESTARTING (TEAM QUEUES COMMON)");
 	QueueObject@ queues;
 	this.get("team_queues", @queues);
 
@@ -181,12 +182,14 @@ void onPlayerLeave(CRules@ this, CPlayer@ player)
 
 void onCommand(CRules@ this, u8 cmd, CBitStream@ params)
 {
+	print("Received command");
 	if (getGameTime() < 60) return; //Bad Delta fix
 
 	QueueObject@ queues;
 	if (!this.get("team_queues", @queues)) return;
 	
 	if (getNet().isServer() && cmd == this.getCommandID(queue_lock_id)) {
+		print("CALLING SPAWN PLAYERS");
 		SpawnPlayers(queues);
 	}
 
@@ -212,8 +215,10 @@ void onCommand(CRules@ this, u8 cmd, CBitStream@ params)
 
 void SpawnPlayers(QueueObject@ queues)
 {
+	print("SPAWN PLAYERS");
 	if (queues is null || queues.timeremaining < 0) return;
-	queues.timeremaining = -1;
+	
+	// queues.timeremaining = -1;
 
 	RulesCore@ core;
     getRules().get("core", @core);

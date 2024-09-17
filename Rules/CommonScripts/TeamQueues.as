@@ -40,6 +40,7 @@ const SColor red_colour(SColor(0xffff0000));
 
 void onTick(CRules@ this)
 {
+
 	QueueObject@ queues;
 	if (!this.get("team_queues", @queues)) return;
 	
@@ -84,19 +85,30 @@ void onTick(CRules@ this)
 					}
 				}
 
+				string timeRemainingString = formatInt(queues.timeremaining, "d");
+				print("variable timeremaining = " + timeRemainingString);
+
 				if (queues.current_blue >= queues.min_players && queues.current_red >= queues.min_players)
 				{
-					queues.enough_in_queue = true;
-					queues.timeremaining--;
+					if (queues.timeremaining > 0) {
+						queues.enough_in_queue = true;
+						queues.timeremaining--;
+					}
+					else {
+						 queues.timeremaining = 0;
+					}
 				}
 				else
 				{
+					print("CALLING RESETTING TIMER");
 					queues.enough_in_queue = false;
 					Rules_ResetQueuesTimer(this, queues);
 				}
 
 				if (queues.timeremaining == 0)	//time up
 				{
+					print("TIME IS 0, SENDING COMMADN TO LOCK QUEUE");
+					SpawnPlayers(queues);
 					this.SendCommand(this.getCommandID(queue_lock_id), CBitStream());
 				}	
 			}	
