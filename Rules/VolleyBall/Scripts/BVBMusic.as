@@ -47,12 +47,12 @@ void AddGameMusic(CBlob@ this, CMixer@ mixer)
 	this.set_bool("initialized game", true);
 	mixer.ResetMixer();
 
-	mixer.AddTrack("../Mods/VolleyballDark/Music/WavesAmbientLoop.ogg", world_waves);
+	mixer.AddTrack("../Mods/Volleyball/Music/WavesAmbientLoop.ogg", world_waves);
 
-	mixer.AddTrack("../Mods/VolleyballDark/Music/Tropical_Holiday.ogg", world_music);
-	mixer.AddTrack("../Mods/VolleyballDark/Music/DaysGoBy.ogg", 		world_music);
-	mixer.AddTrack("../Mods/VolleyballDark/Music/HyperParadise.ogg", 	world_music);
-	mixer.AddTrack("../Mods/VolleyballDark/Music/InTheAirTonight.ogg", 	world_music);
+	mixer.AddTrack("../Mods/Volleyball/Music/Tropical_Holiday.ogg", world_music);
+	mixer.AddTrack("../Mods/Volleyball/Music/DaysGoBy.ogg", 		world_music);
+	mixer.AddTrack("../Mods/Volleyball/Music/HyperParadise.ogg", 	world_music);
+	mixer.AddTrack("../Mods/Volleyball/Music/InTheAirTonight.ogg", 	world_music);
 }
 
 void GameMusicLogic(CBlob@ this, CMixer@ mixer)

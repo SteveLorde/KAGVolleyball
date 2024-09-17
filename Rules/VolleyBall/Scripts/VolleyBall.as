@@ -11,7 +11,7 @@
 
 //edit the variables in the config file below to change the basics
 // no scripting required! 
-string bvb_config_file = "../Mods/VolleyballDark/volleyball_vars.cfg";
+string bvb_config_file = "../Mods/Volleyball/volleyball_vars.cfg";
 
 void Config(BVBCore@ this)
 {
@@ -334,7 +334,7 @@ shared class BVBCore : RulesCore
 		gamestart = getGameTime();
 		@bvb_spawns = cast < BVBSpawns@ > (_respawns);		
 		_rules.set_string("music - base name", base_name());
-		server_CreateBlob("../Mods/VolleyballDark/Rules/VolleyBall/Scripts/BVBMusic.cfg");
+		server_CreateBlob("../Mods/Volleyball/Rules/VolleyBall/Scripts/BVBMusic.cfg");
 
 		sv_mapautocycle = true;
 	}

@@ -4,7 +4,7 @@ const string join_blue_id = "join: blue";
 const string join_red_id = "join: red";
 const string exit_queues_id = "exit: queues";
 const string queue_lock_id = "lock: queues";
-string bvb_config_file = "../Mods/VolleyballDark/volleyball_vars.cfg";
+string bvb_config_file = "../Mods/Volleyball/volleyball_vars.cfg";
 
 class QueueObject
 {

@@ -57,7 +57,7 @@ void onInit(CBlob@ this)
 	this.set_bool("hasSwung", false);
 
 	//this.set_Vec2f("inventory offset", Vec2f(0.0f, 0.0f));
-	string bvb_config_file = "../Mods/VolleyballDark/volleyball_vars.cfg";
+	string bvb_config_file = "../Mods/Volleyball/volleyball_vars.cfg";
 	if (getRules().exists("bvb_config"))
 	bvb_config_file = getRules().get_string("bvb_config");
 			
