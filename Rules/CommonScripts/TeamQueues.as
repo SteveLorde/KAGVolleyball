@@ -109,8 +109,8 @@ void onTick(CRules@ this)
 				{
 					print("TIME IS 0, SENDING COMMADN TO LOCK QUEUE");
 					SpawnPlayers(queues);
-					this.SendCommand(this.getCommandID(queue_lock_id), CBitStream());
-				}	
+					// this.SendCommand(this.getCommandID(queue_lock_id), CBitStream());
+				}
 			}	
 
 			if (!queues.enough_in_queue)
